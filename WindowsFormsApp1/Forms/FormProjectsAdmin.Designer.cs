@@ -1,5 +1,5 @@
 ﻿
-namespace ProjectManagmentSystem
+namespace WindowsFormsApp1.Forms
 {
     partial class FormProjectsAdmin
     {
@@ -29,68 +29,57 @@ namespace ProjectManagmentSystem
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.btnCreateProject = new System.Windows.Forms.Button();
-            this.btnUpdateProject = new System.Windows.Forms.Button();
-            this.btnDeleteProject = new System.Windows.Forms.Button();
-            this.dvgProjects = new System.Windows.Forms.DataGridView();
-            this.projectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnManageTasks = new System.Windows.Forms.Button();
+            this.dvgProjects = new System.Windows.Forms.DataGridView();
+            this.btnDeleteProject = new System.Windows.Forms.Button();
+            this.btnUpdateProject = new System.Windows.Forms.Button();
+            this.btnCreateProject = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgProjects)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCreateProject
+            // btnManageTasks
             // 
-            this.btnCreateProject.Location = new System.Drawing.Point(12, 12);
-            this.btnCreateProject.Name = "btnCreateProject";
-            this.btnCreateProject.Size = new System.Drawing.Size(183, 83);
-            this.btnCreateProject.TabIndex = 0;
-            this.btnCreateProject.Text = "Create new Project";
-            this.btnCreateProject.UseVisualStyleBackColor = true;
-            this.btnCreateProject.Click += new System.EventHandler(this.btnCreateProject_Click);
-            // 
-            // btnUpdateProject
-            // 
-            this.btnUpdateProject.Location = new System.Drawing.Point(12, 379);
-            this.btnUpdateProject.Name = "btnUpdateProject";
-            this.btnUpdateProject.Size = new System.Drawing.Size(183, 41);
-            this.btnUpdateProject.TabIndex = 1;
-            this.btnUpdateProject.Text = "Update Project";
-            this.btnUpdateProject.UseVisualStyleBackColor = true;
-            this.btnUpdateProject.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnDeleteProject
-            // 
-            this.btnDeleteProject.Location = new System.Drawing.Point(592, 379);
-            this.btnDeleteProject.Name = "btnDeleteProject";
-            this.btnDeleteProject.Size = new System.Drawing.Size(183, 41);
-            this.btnDeleteProject.TabIndex = 2;
-            this.btnDeleteProject.Text = "Delete Project";
-            this.btnDeleteProject.UseVisualStyleBackColor = true;
-            this.btnDeleteProject.Click += new System.EventHandler(this.btnDeleteProject_Click);
+            this.btnManageTasks.Location = new System.Drawing.Point(289, 390);
+            this.btnManageTasks.Name = "btnManageTasks";
+            this.btnManageTasks.Size = new System.Drawing.Size(193, 41);
+            this.btnManageTasks.TabIndex = 9;
+            this.btnManageTasks.Text = "Manage Tasks";
+            this.btnManageTasks.UseVisualStyleBackColor = true;
             // 
             // dvgProjects
             // 
             this.dvgProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgProjects.Location = new System.Drawing.Point(13, 117);
+            this.dvgProjects.Location = new System.Drawing.Point(12, 128);
             this.dvgProjects.Name = "dvgProjects";
             this.dvgProjects.Size = new System.Drawing.Size(762, 218);
-            this.dvgProjects.TabIndex = 3;
+            this.dvgProjects.TabIndex = 8;
             // 
-            // projectBindingSource
+            // btnDeleteProject
             // 
-            this.projectBindingSource.DataSource = typeof(ProjectManagmentSystem.Project);
+            this.btnDeleteProject.Location = new System.Drawing.Point(591, 390);
+            this.btnDeleteProject.Name = "btnDeleteProject";
+            this.btnDeleteProject.Size = new System.Drawing.Size(183, 41);
+            this.btnDeleteProject.TabIndex = 7;
+            this.btnDeleteProject.Text = "Delete Project";
+            this.btnDeleteProject.UseVisualStyleBackColor = true;
             // 
-            // btnManageTasks
+            // btnUpdateProject
             // 
-            this.btnManageTasks.Location = new System.Drawing.Point(290, 379);
-            this.btnManageTasks.Name = "btnManageTasks";
-            this.btnManageTasks.Size = new System.Drawing.Size(193, 41);
-            this.btnManageTasks.TabIndex = 4;
-            this.btnManageTasks.Text = "Manage Tasks";
-            this.btnManageTasks.UseVisualStyleBackColor = true;
-            this.btnManageTasks.Click += new System.EventHandler(this.btnManageTasks_Click);
+            this.btnUpdateProject.Location = new System.Drawing.Point(11, 390);
+            this.btnUpdateProject.Name = "btnUpdateProject";
+            this.btnUpdateProject.Size = new System.Drawing.Size(183, 41);
+            this.btnUpdateProject.TabIndex = 6;
+            this.btnUpdateProject.Text = "Update Project";
+            this.btnUpdateProject.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateProject
+            // 
+            this.btnCreateProject.Location = new System.Drawing.Point(11, 23);
+            this.btnCreateProject.Name = "btnCreateProject";
+            this.btnCreateProject.Size = new System.Drawing.Size(183, 83);
+            this.btnCreateProject.TabIndex = 5;
+            this.btnCreateProject.Text = "Create new Project";
+            this.btnCreateProject.UseVisualStyleBackColor = true;
             // 
             // FormProjectsAdmin
             // 
@@ -105,18 +94,16 @@ namespace ProjectManagmentSystem
             this.Name = "FormProjectsAdmin";
             this.Text = "FormProjectsAdmin";
             ((System.ComponentModel.ISupportInitialize)(this.dvgProjects)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnCreateProject;
-        private System.Windows.Forms.Button btnUpdateProject;
-        private System.Windows.Forms.Button btnDeleteProject;
-        private System.Windows.Forms.DataGridView dvgProjects;
-        private System.Windows.Forms.BindingSource projectBindingSource;
         private System.Windows.Forms.Button btnManageTasks;
+        private System.Windows.Forms.DataGridView dvgProjects;
+        private System.Windows.Forms.Button btnDeleteProject;
+        private System.Windows.Forms.Button btnUpdateProject;
+        private System.Windows.Forms.Button btnCreateProject;
     }
 }

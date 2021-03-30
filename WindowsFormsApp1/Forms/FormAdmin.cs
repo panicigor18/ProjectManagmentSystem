@@ -1,4 +1,4 @@
-﻿using ProjectManagmentSystem.Forms;
+﻿using ProjectManagmentSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,14 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormAdmin : Form
     {
         public User user1;
         public FormAdmin(User user)
         {
-            user1=user;
+            user1 = user;
             InitializeComponent();
         }
 

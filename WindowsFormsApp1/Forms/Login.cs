@@ -1,4 +1,4 @@
-﻿using ProjectManagmentSystem.Forms;
+﻿using ProjectManagmentSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,40 +9,42 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem
+namespace WindowsFormsApp1.Forms
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         DBBroker broker = new DBBroker();
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+       
+
+        private void btnLogin_Click_1(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             User user = broker.Login(username, password);
-          
-                if (user != null)
+
+            if (user != null)
+            {
+                if (user.Role == 0)
                 {
-                    if (user.Role == 0)
-                    {
-                        this.Hide();
-                        FormAdmin forma = new FormAdmin(user);
-                        forma.Text = "Welcome "+user.Name+" "+user.Surname;
-                        forma.ShowDialog();
-                        this.Show();
-                    }
-                    if (user.Role == 1)
-                    {
-                        this.Hide();
-                        FormProjectsAdmin forma = new FormProjectsAdmin(user);
-                        forma.Text = "Welcome " + user.Name + " " + user.Surname;
-                        forma.ShowDialog();
-                        this.Show();
-                    }
+                    this.Hide();
+                    FormAdmin forma = new FormAdmin(user);
+                    forma.Text = "Welcome " + user.Name + " " + user.Surname;
+                    forma.ShowDialog();
+                    this.Show();
+                }
+                if (user.Role == 1)
+                {
+                    this.Hide();
+                    FormProjectsAdmin forma = new FormProjectsAdmin(user);
+                    forma.Text = "Welcome " + user.Name + " " + user.Surname;
+                    forma.ShowDialog();
+                    this.Show();
+                }
                 if (user.Role == 2)
                 {
                     this.Hide();
@@ -54,12 +56,11 @@ namespace ProjectManagmentSystem
 
 
             }
-                else
-                {
-                    lblProslo.Text = "Some error with login";
-                }
-                //var studentName = context.Users.SqlQuery(@"select * from Users where Username='++' AND Password='igor'").FirstOrDefault<User>();
+            else
+            {
+                lblProslo.Text = "Some error with login";
             }
         }
     }
+}
 

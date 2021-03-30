@@ -1,18 +1,19 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
+using System.Windows.Forms;
+using DataLayer;
 namespace ProjectManagmentSystem.Forms
 {
     public partial class FormManageTasks : Form
     {
-        DBBroker broker = new DBBroker();
+        TaskLogic taskLogic = new TaskLogic();
         BindingList<Task> bindTasks;
         Project project;
         
@@ -31,7 +32,7 @@ namespace ProjectManagmentSystem.Forms
 
         private void refresh()
         {
-            bindTasks = new BindingList<Task>(broker.returnAllTasksForProject(project));
+            bindTasks = new BindingList<Task>(taskLogic.returnAllTasksForProject(project));
             foreach (var task in bindTasks)
             {
                 task.ProgressInPercentes = Convert.ToDecimal(task.Progress * 100);
@@ -108,7 +109,7 @@ namespace ProjectManagmentSystem.Forms
             DialogResult dialogResult = MessageBox.Show("Do you want to delete that task", "Delete task", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                bool pass=broker.removeTask(task);
+                bool pass=taskLogic.removeTask(task);
                 if (pass)
                 {
                     MessageBox.Show("Task deleted successfully");

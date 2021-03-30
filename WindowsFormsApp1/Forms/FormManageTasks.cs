@@ -1,24 +1,25 @@
-﻿using System;
+﻿using ProjectManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormManageTasks : Form
     {
         DBBroker broker = new DBBroker();
         BindingList<Task> bindTasks;
         Project project;
-        
+
         public FormManageTasks(Project project, User userLogged)
         {
-            
+
             InitializeComponent();
             this.project = project;
             if (userLogged.Role == 1)
@@ -26,7 +27,7 @@ namespace ProjectManagmentSystem.Forms
                 btnDeleteTask.Visible = false;
             }
             refresh();
-            
+
         }
 
         private void refresh()
@@ -75,7 +76,7 @@ namespace ProjectManagmentSystem.Forms
             {
 
                 MessageBox.Show("Please select Task");
-                
+
                 return;
             }
             this.Hide();
@@ -102,13 +103,13 @@ namespace ProjectManagmentSystem.Forms
             {
 
                 MessageBox.Show("Please select Task");
-                
+
                 return;
             }
             DialogResult dialogResult = MessageBox.Show("Do you want to delete that task", "Delete task", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                bool pass=broker.removeTask(task);
+                bool pass = broker.removeTask(task);
                 if (pass)
                 {
                     MessageBox.Show("Task deleted successfully");
@@ -123,7 +124,7 @@ namespace ProjectManagmentSystem.Forms
             {
                 return;
             }
-            
+
         }
     }
 }

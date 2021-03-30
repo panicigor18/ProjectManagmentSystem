@@ -1,27 +1,29 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
+using System.Windows.Forms;
+using DataLayer;
 namespace ProjectManagmentSystem.Forms
 {
     
     public partial class FormUpdateTask : Form
     {
         BindingList<User> listUsers;
-        private DBBroker broker = new DBBroker();
+        UsersLogic usersLogic = new UsersLogic();
+        TaskLogic taskLogic = new TaskLogic();
         public Task task;
         public FormUpdateTask(Task task)
         {
             InitializeComponent();
             this.task = task;
             cmbStatus.DataSource = Enum.GetValues(typeof(Status));
-            listUsers = new BindingList<User>(broker.getAllUsersWithRole(2));
+            listUsers = new BindingList<User>((IList<User>)usersLogic.getAllUsersWithRole(2));
             
             cmbDevelopers.Items.Insert(0, "");
             foreach (User user in listUsers)
@@ -82,6 +84,7 @@ namespace ProjectManagmentSystem.Forms
 
         private void txtProgress_TextChanged(object sender, EventArgs e)
         {
+            txtProgress.BackColor = Color.White;
             if (txtProgress.Text == "100")
             {
                 cmbStatus.SelectedItem = Status.Finshed;
@@ -90,7 +93,7 @@ namespace ProjectManagmentSystem.Forms
             {
                 cmbStatus.SelectedItem = Status.New;
             }
-            if(txtProgress.Text!=""&&Convert.ToDecimal(txtProgress.Text)<100&& Convert.ToDecimal(txtProgress.Text) > 0)
+            if(txtProgress.Text!=""&&Decimal.Parse(txtProgress.Text)<100&& Decimal.Parse(txtProgress.Text) > 0)
             {
                 cmbStatus.SelectedItem = Status.In_Progress;
             }
@@ -121,7 +124,7 @@ namespace ProjectManagmentSystem.Forms
             }
             
             task.Status =(int)cmbStatus.SelectedItem;
-            bool pass = broker.updateTask(task);
+            bool pass = taskLogic.updateTask(task);
             if (pass)
             {
                 MessageBox.Show("Task updated succesfuly");
@@ -130,7 +133,7 @@ namespace ProjectManagmentSystem.Forms
             {
                 MessageBox.Show("System can't update task");
             }
-
+            this.Close();
         }
     }
 }

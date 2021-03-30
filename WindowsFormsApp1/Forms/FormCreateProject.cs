@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormCreateProject : Form
     {
@@ -31,8 +32,8 @@ namespace ProjectManagmentSystem.Forms
         {
             string letters = "abcdefghijklmnopqrstuvwxyz";
             letters = letters.ToUpper();
-            
-            string random="";
+
+            string random = "";
             bool pass = false;
             while (!pass)
             {
@@ -46,8 +47,8 @@ namespace ProjectManagmentSystem.Forms
                 if (project == null)
                 {
                     pass = true;
-                }    
-                
+                }
+
             }
 
 
@@ -82,10 +83,10 @@ namespace ProjectManagmentSystem.Forms
                 default:
                     MessageBox.Show("You don't have permision create Project");
                     return;
-                    
+
             }
-            
-            bool pass= broker.createProject(project);
+
+            bool pass = broker.createProject(project);
             if (pass)
             {
                 MessageBox.Show("Project saved successfully");

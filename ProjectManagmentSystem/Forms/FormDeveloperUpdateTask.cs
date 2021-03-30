@@ -1,18 +1,19 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
+using System.Windows.Forms;
+using DataLayer;
 namespace ProjectManagmentSystem.Forms
 {
     public partial class FormDeveloperUpdateTask : Form
     {
-        private DBBroker broker = new DBBroker();
+        TaskLogic taskLogic = new TaskLogic();
         public Task task;
         public FormDeveloperUpdateTask(Task task)
         {
@@ -42,7 +43,7 @@ namespace ProjectManagmentSystem.Forms
             }
 
             task.Status = (int)cmbStatus.SelectedItem;
-            bool pass = broker.updateTask(task);
+            bool pass = taskLogic.updateTask(task);
             if (pass)
             {
                 MessageBox.Show("Task updated succesfuly");

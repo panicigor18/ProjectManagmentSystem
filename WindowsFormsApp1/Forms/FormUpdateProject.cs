@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormUpdateProject : Form
     {
@@ -37,7 +38,7 @@ namespace ProjectManagmentSystem.Forms
                 txtName.BackColor = Color.Red;
                 return;
             }
-            
+
             project.User = (User)cmbProjectManager.SelectedItem;
             project.ProjectManager = project.User.Username;
             bool pass = broker.updateProject(project);
@@ -49,36 +50,6 @@ namespace ProjectManagmentSystem.Forms
             {
                 MessageBox.Show("System can't update project");
             }
-        }
-
-        private void cmbProjectManager_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtProjectCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

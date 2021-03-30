@@ -1,4 +1,5 @@
-﻿using ProjectManagmentSystem.Forms;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using ProjectManagmentSystem.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,12 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using DataLayer;
 namespace ProjectManagmentSystem
 {
     public partial class FormProjectsAdmin : Form
     {
-        DBBroker broker = new DBBroker();
+        ProjectLogic projectLogic = new ProjectLogic();
+        UsersLogic usersLogic = new UsersLogic();
         BindingList<Project> bindProjects;
         User userLogged;
         public FormProjectsAdmin(User user1)
@@ -42,7 +44,7 @@ namespace ProjectManagmentSystem
 
         private void refreshProjectManager()
         {
-            bindProjects = new BindingList<Project>(broker.returnAllProjectForPM(userLogged));
+            bindProjects = new BindingList<Project>(projectLogic.returnAllProjectForPM(userLogged));
             btnDeleteProject.Visible = false;
             btnUpdateProject.Visible = false;
             dvgProjects.DataSource = bindProjects;
@@ -62,7 +64,7 @@ namespace ProjectManagmentSystem
 
         private void refreshAdmin()
         {
-            bindProjects =  new BindingList<Project>(broker.returnAllProject());
+            bindProjects =  new BindingList<Project>(projectLogic.returnAllProject());
             
             dvgProjects.DataSource = bindProjects;
             if (bindProjects.Count < 1)
@@ -81,7 +83,19 @@ namespace ProjectManagmentSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Project project = (Project)dvgProjects.SelectedRows[0].DataBoundItem;
+            Project project;
+            dvgProjects.Rows[dvgProjects.CurrentCell.RowIndex].Selected = true;
+            try
+            {
+                project = (Project)dvgProjects.SelectedRows[0].DataBoundItem;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Please select Project");
+
+                return;
+            }
             this.Hide();
             FormUpdateProject form = new FormUpdateProject(project);
             form.ShowDialog();
@@ -94,8 +108,21 @@ namespace ProjectManagmentSystem
             DialogResult dialogResult = MessageBox.Show("Do you want to delete that project", "Delete project", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                Project project = (Project)dvgProjects.SelectedRows[0].DataBoundItem;
-                bool pass=broker.removeProject(project);
+
+                Project project;
+                dvgProjects.Rows[dvgProjects.CurrentCell.RowIndex].Selected = true;
+                try
+                {
+                    project = (Project)dvgProjects.SelectedRows[0].DataBoundItem;
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Please select Project");
+
+                    return;
+                }
+                bool pass=projectLogic.removeProject(project);
                 if (pass)
                 {
                     MessageBox.Show("Project deleted successfully");
@@ -116,6 +143,12 @@ namespace ProjectManagmentSystem
 
         private void btnCreateProject_Click(object sender, EventArgs e)
         {
+            List<User> projectManagers = new List<User>((List<User>)usersLogic.getAllUsersWithRole(1));
+            if (projectManagers.Count < 1)
+            {
+                MessageBox.Show("The system doesn't have any project manager, you cannot create a new project");
+                return;
+            }
             this.Hide();
             FormCreateProject form = new FormCreateProject(userLogged);
             form.ShowDialog();

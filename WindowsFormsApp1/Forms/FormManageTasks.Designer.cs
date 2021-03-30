@@ -1,5 +1,5 @@
 ﻿
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     partial class FormManageTasks
     {
@@ -29,63 +29,59 @@ namespace ProjectManagmentSystem.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.dvgTasks = new System.Windows.Forms.DataGridView();
-            this.btnCreateTask = new System.Windows.Forms.Button();
-            this.btnUpdateTask = new System.Windows.Forms.Button();
             this.btnDeleteTask = new System.Windows.Forms.Button();
+            this.btnUpdateTask = new System.Windows.Forms.Button();
+            this.btnCreateTask = new System.Windows.Forms.Button();
+            this.dvgTasks = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dvgTasks)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnDeleteTask
+            // 
+            this.btnDeleteTask.Location = new System.Drawing.Point(496, 336);
+            this.btnDeleteTask.Name = "btnDeleteTask";
+            this.btnDeleteTask.Size = new System.Drawing.Size(156, 23);
+            this.btnDeleteTask.TabIndex = 7;
+            this.btnDeleteTask.Text = "Delete Task";
+            this.btnDeleteTask.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateTask
+            // 
+            this.btnUpdateTask.Location = new System.Drawing.Point(261, 336);
+            this.btnUpdateTask.Name = "btnUpdateTask";
+            this.btnUpdateTask.Size = new System.Drawing.Size(156, 23);
+            this.btnUpdateTask.TabIndex = 6;
+            this.btnUpdateTask.Text = "Update Task";
+            this.btnUpdateTask.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateTask
+            // 
+            this.btnCreateTask.Location = new System.Drawing.Point(40, 336);
+            this.btnCreateTask.Name = "btnCreateTask";
+            this.btnCreateTask.Size = new System.Drawing.Size(156, 23);
+            this.btnCreateTask.TabIndex = 5;
+            this.btnCreateTask.Text = "Create Task";
+            this.btnCreateTask.UseVisualStyleBackColor = true;
             // 
             // dvgTasks
             // 
             this.dvgTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgTasks.Location = new System.Drawing.Point(36, 108);
+            this.dvgTasks.Location = new System.Drawing.Point(40, 70);
             this.dvgTasks.Name = "dvgTasks";
             this.dvgTasks.Size = new System.Drawing.Size(612, 228);
-            this.dvgTasks.TabIndex = 0;
-            // 
-            // btnCreateTask
-            // 
-            this.btnCreateTask.Location = new System.Drawing.Point(36, 374);
-            this.btnCreateTask.Name = "btnCreateTask";
-            this.btnCreateTask.Size = new System.Drawing.Size(156, 23);
-            this.btnCreateTask.TabIndex = 1;
-            this.btnCreateTask.Text = "Create Task";
-            this.btnCreateTask.UseVisualStyleBackColor = true;
-            this.btnCreateTask.Click += new System.EventHandler(this.btnCreateTask_Click);
-            // 
-            // btnUpdateTask
-            // 
-            this.btnUpdateTask.Location = new System.Drawing.Point(257, 374);
-            this.btnUpdateTask.Name = "btnUpdateTask";
-            this.btnUpdateTask.Size = new System.Drawing.Size(156, 23);
-            this.btnUpdateTask.TabIndex = 2;
-            this.btnUpdateTask.Text = "Update Task";
-            this.btnUpdateTask.UseVisualStyleBackColor = true;
-            this.btnUpdateTask.Click += new System.EventHandler(this.btnUpdateTask_Click);
-            // 
-            // btnDeleteTask
-            // 
-            this.btnDeleteTask.Location = new System.Drawing.Point(492, 374);
-            this.btnDeleteTask.Name = "btnDeleteTask";
-            this.btnDeleteTask.Size = new System.Drawing.Size(156, 23);
-            this.btnDeleteTask.TabIndex = 3;
-            this.btnDeleteTask.Text = "Delete Task";
-            this.btnDeleteTask.UseVisualStyleBackColor = true;
-            this.btnDeleteTask.Click += new System.EventHandler(this.btnDeleteTask_Click);
+            this.dvgTasks.TabIndex = 4;
             // 
             // FormManageTasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 450);
+            this.ClientSize = new System.Drawing.Size(713, 450);
             this.Controls.Add(this.btnDeleteTask);
             this.Controls.Add(this.btnUpdateTask);
             this.Controls.Add(this.btnCreateTask);
             this.Controls.Add(this.dvgTasks);
             this.Name = "FormManageTasks";
             this.Text = "FormManageTasks";
-            this.Load += new System.EventHandler(this.FormManageTasks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgTasks)).EndInit();
             this.ResumeLayout(false);
 
@@ -93,9 +89,9 @@ namespace ProjectManagmentSystem.Forms
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dvgTasks;
-        private System.Windows.Forms.Button btnCreateTask;
-        private System.Windows.Forms.Button btnUpdateTask;
         private System.Windows.Forms.Button btnDeleteTask;
+        private System.Windows.Forms.Button btnUpdateTask;
+        private System.Windows.Forms.Button btnCreateTask;
+        private System.Windows.Forms.DataGridView dvgTasks;
     }
 }

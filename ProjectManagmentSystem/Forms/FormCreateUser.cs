@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,16 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using DataLayer;
 namespace ProjectManagmentSystem.Forms
 {
     public partial class FormCreateUser : Form
     {
-        DBBroker broker = new DBBroker();
-        public FormCreateUser()
+        UsersLogic usersLogic = new UsersLogic();
+        bool initalCreate;
+        public FormCreateUser(bool init)
         {
             InitializeComponent();
+            initalCreate = init;
+            
             cmbRole.DataSource = Enum.GetValues(typeof(Role));
+            if (initalCreate == true)
+            {
+                cmbRole.SelectedIndex = 0;
+                cmbRole.Enabled = false;
+            }
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -25,7 +34,7 @@ namespace ProjectManagmentSystem.Forms
            
             if (txtUsernam.Text != "" )
             {
-                bool UsernameUnique = broker.isUsernameUnique(txtUsernam.Text);
+                bool UsernameUnique = usersLogic.isUsernameUnique(txtUsernam.Text);
                 if (UsernameUnique)
                 {
                     user.Username = txtUsernam.Text;
@@ -46,7 +55,16 @@ namespace ProjectManagmentSystem.Forms
             {
                 if (txtPasword.Text == txtConfirmPassword.Text)
                 {
-                    user.Password = txtPasword.Text;
+                    string ErrorMessage;
+                    if (usersLogic.ValidatePassword(txtPasword.Text, out ErrorMessage))
+                    {
+                        user.Password = txtPasword.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show(ErrorMessage);
+                        return;
+                    }
                 }
                 else
                 {
@@ -87,18 +105,35 @@ namespace ProjectManagmentSystem.Forms
                 return;
             }
             user.Role = (int)cmbRole.SelectedItem;
-            bool pass = broker.createUser(user);
+            bool pass = usersLogic.createUser(user);
             if (pass)
             {
                 MessageBox.Show("User saved successfully");
-                return;
+                if (initalCreate)
+                {
+                    this.Hide();
+                    new Form1().ShowDialog();
+                }
+                
+                
             }
             else
             {
                 MessageBox.Show("System can't save user");
-                return;
+                
             }
+            refreshInputs();
+        }
 
+        private void refreshInputs()
+        {
+            txtUsernam.Text = "";
+            txtPasword.Text = "";
+            txtConfirmPassword.Text = "";
+            txtEmail.Text = "";
+            txtName.Text = "";
+            txtSurname.Text = "";
+            cmbRole.SelectedIndex = 0;
         }
     }
 }

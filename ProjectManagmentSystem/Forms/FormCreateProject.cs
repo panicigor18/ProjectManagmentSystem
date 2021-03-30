@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,52 +8,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using DataLayer;
 namespace ProjectManagmentSystem.Forms
 {
     public partial class FormCreateProject : Form
     {
-        DBBroker broker = new DBBroker();
+        UsersLogic userLogic = new UsersLogic();
+        ProjectLogic projectLogic = new ProjectLogic();
         User userLogged;
         public FormCreateProject(User userLogged)
         {
             InitializeComponent();
             this.userLogged = userLogged;
-            if (userLogged.Role == 0) { cmbProjectManager.DataSource = broker.getAllUsersWithRole(1); }
+            if (userLogged.Role == 0) { 
+                
+                BindingList<User> projectManagers= new  BindingList<User>((List<User>)userLogic.getAllUsersWithRole(1));
+                
+                    
+               
+                cmbProjectManager.DataSource = projectManagers;
+            }
             else
             {
                 cmbProjectManager.Visible = false;
                 label3.Visible = false;
             }
-            txtProjectCode.Text = randomCodeForProjectCode();
+            txtProjectCode.Text = projectLogic.randomCodeForProjectCode();
         }
 
-        private string randomCodeForProjectCode()
-        {
-            string letters = "abcdefghijklmnopqrstuvwxyz";
-            letters = letters.ToUpper();
-            
-            string random="";
-            bool pass = false;
-            while (!pass)
-            {
-                random = "";
-                Random rn = new Random();
-                for (int i = 0; i < 3; i++)
-                {
-                    random += letters[rn.Next(0, 25)] + "" + (rn.Next(0, 9));
-                }
-                Project project = broker.IsProjectCodeUnique(random);
-                if (project == null)
-                {
-                    pass = true;
-                }    
-                
-            }
-
-
-            return random;
-        }
+        
 
         private void btnAddProject_Click(object sender, EventArgs e)
         {
@@ -85,7 +69,7 @@ namespace ProjectManagmentSystem.Forms
                     
             }
             
-            bool pass= broker.createProject(project);
+            bool pass= projectLogic.createProject(project);
             if (pass)
             {
                 MessageBox.Show("Project saved successfully");
@@ -94,6 +78,14 @@ namespace ProjectManagmentSystem.Forms
             {
                 MessageBox.Show("System can't save project");
             }
+            refreshInputs();
+        }
+
+        private void refreshInputs()
+        {
+            txtProjectCode.Text = projectLogic.randomCodeForProjectCode();
+            txtName.BackColor = Color.White;
+            txtName.Text = "";
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormCreateUser : Form
     {
@@ -22,8 +23,8 @@ namespace ProjectManagmentSystem.Forms
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             User user = new User();
-           
-            if (txtUsernam.Text != "" )
+
+            if (txtUsernam.Text != "")
             {
                 bool UsernameUnique = broker.isUsernameUnique(txtUsernam.Text);
                 if (UsernameUnique)
@@ -35,7 +36,7 @@ namespace ProjectManagmentSystem.Forms
                     MessageBox.Show("Username is not unique");
                     return;
                 }
-                
+
             }
             else
             {

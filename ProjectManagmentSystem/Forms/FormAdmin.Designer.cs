@@ -62,6 +62,7 @@ namespace ProjectManagmentSystem
             this.Controls.Add(this.btnProjects);
             this.Name = "FormAdmin";
             this.Text = "FormAdmin";
+            this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.ResumeLayout(false);
 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormUsersAdmin : Form
     {
@@ -27,7 +28,7 @@ namespace ProjectManagmentSystem.Forms
             {
                 user.rolee = (Role)user.Role;
             }
-            dgvUsers.DataSource=bindUsers;
+            dgvUsers.DataSource = bindUsers;
             if (bindUsers.Count < 1)
             {
                 btnDeleteUser.Enabled = false;
@@ -67,7 +68,7 @@ namespace ProjectManagmentSystem.Forms
             DialogResult dialogResult = MessageBox.Show("Do you want to delete that user", "Delete user", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                bool pass=broker.removeUser(user);
+                bool pass = broker.removeUser(user);
                 if (pass)
                 {
                     MessageBox.Show("User deleted successfully");
@@ -82,7 +83,7 @@ namespace ProjectManagmentSystem.Forms
             {
                 return;
             }
-           
+
         }
 
         private void btnUpdateUser_Click(object sender, EventArgs e)

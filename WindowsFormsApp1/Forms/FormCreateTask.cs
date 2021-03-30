@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,9 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
-    
     public partial class FormCreateTask : Form
     {
         DBBroker broker = new DBBroker();
@@ -27,17 +27,17 @@ namespace ProjectManagmentSystem.Forms
             }
 
             cmbDevelopers.Items.Insert(0, "");
-            
+
             dtpDeadline.MinDate = DateTime.Today;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Task task = new Task();
+            ProjectManagmentSystem.Task task = new ProjectManagmentSystem.Task();
             task.Project = project;
             task.ProjectCode = project.ProjectCode;
             // task.User = (User)cmbDevelopers.SelectedItem;
-            if (cmbDevelopers.SelectedItem != null&& cmbDevelopers.SelectedItem.ToString() != "")
+            if (cmbDevelopers.SelectedItem != null && cmbDevelopers.SelectedItem.ToString() != "")
             {
                 task.Assignee = ((User)cmbDevelopers.SelectedItem).Username;
             }
@@ -51,7 +51,7 @@ namespace ProjectManagmentSystem.Forms
             task.Status = 0;
             task.TaskID = broker.returnTaskId();
             project.Tasks.Add(task);
-            
+
             bool pass = broker.createTask(task);
             if (pass)
             {

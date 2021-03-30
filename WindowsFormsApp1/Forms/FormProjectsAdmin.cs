@@ -1,4 +1,4 @@
-﻿using ProjectManagmentSystem.Forms;
+﻿using ProjectManagmentSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormProjectsAdmin : Form
     {
@@ -19,7 +19,7 @@ namespace ProjectManagmentSystem
         public FormProjectsAdmin(User user1)
         {
             InitializeComponent();
-            userLogged=user1;
+            userLogged = user1;
             switch (user1.Role)
             {
                 case 0:
@@ -32,12 +32,12 @@ namespace ProjectManagmentSystem
                     break;
             }
 
-            
-            
-            
 
-           
-               
+
+
+
+
+
         }
 
         private void refreshProjectManager()
@@ -48,22 +48,22 @@ namespace ProjectManagmentSystem
             dvgProjects.DataSource = bindProjects;
             if (bindProjects.Count < 1)
             {
-                
+
                 btnManageTasks.Enabled = false;
-               
+
             }
             else
             {
-                
+
                 btnManageTasks.Enabled = true;
-                
+
             }
         }
 
         private void refreshAdmin()
         {
-            bindProjects =  new BindingList<Project>(broker.returnAllProject());
-            
+            bindProjects = new BindingList<Project>(broker.returnAllProject());
+
             dvgProjects.DataSource = bindProjects;
             if (bindProjects.Count < 1)
             {
@@ -95,7 +95,7 @@ namespace ProjectManagmentSystem
             if (dialogResult == DialogResult.Yes)
             {
                 Project project = (Project)dvgProjects.SelectedRows[0].DataBoundItem;
-                bool pass=broker.removeProject(project);
+                bool pass = broker.removeProject(project);
                 if (pass)
                 {
                     MessageBox.Show("Project deleted successfully");
@@ -104,14 +104,14 @@ namespace ProjectManagmentSystem
                 {
                     MessageBox.Show("System can't delete project");
                 }
-               
+
                 refreshAdmin();
             }
             else if (dialogResult == DialogResult.No)
             {
                 return;
             }
-            
+
         }
 
         private void btnCreateProject_Click(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace ProjectManagmentSystem
 
         private void btnManageTasks_Click(object sender, EventArgs e)
         {
-            Project project=new Project();
+            Project project = new Project();
             dvgProjects.Rows[dvgProjects.CurrentCell.RowIndex].Selected = true;
             try
             {
@@ -145,11 +145,11 @@ namespace ProjectManagmentSystem
             {
 
                 MessageBox.Show("Please select Project");
-                
+
                 return;
             }
             this.Hide();
-            FormManageTasks form = new FormManageTasks(project,userLogged);
+            FormManageTasks form = new FormManageTasks(project, userLogged);
             form.ShowDialog();
             this.Show();
             switch (userLogged.Role)

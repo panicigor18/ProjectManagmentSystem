@@ -74,13 +74,10 @@ namespace ProjectManagmentSystem
             // 
             this.dvgProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgProjects.Location = new System.Drawing.Point(13, 117);
+            this.dvgProjects.MultiSelect = false;
             this.dvgProjects.Name = "dvgProjects";
             this.dvgProjects.Size = new System.Drawing.Size(762, 218);
             this.dvgProjects.TabIndex = 3;
-            // 
-            // projectBindingSource
-            // 
-            this.projectBindingSource.DataSource = typeof(ProjectManagmentSystem.Project);
             // 
             // btnManageTasks
             // 

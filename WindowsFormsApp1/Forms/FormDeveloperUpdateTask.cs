@@ -1,14 +1,15 @@
-﻿using System;
+﻿using ProjectManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormDeveloperUpdateTask : Form
     {
@@ -26,9 +27,9 @@ namespace ProjectManagmentSystem.Forms
 
         private void btnUpdateTask_Click(object sender, EventArgs e)
         {
-            
+
             task.Description = tbxDescription.Text;
-           
+
             if (txtProgress.Text != "" && Convert.ToDecimal(txtProgress.Text) <= 100 && Convert.ToDecimal(txtProgress.Text) >= 0)
             {
                 task.Progress = (Convert.ToDecimal(txtProgress.Text) / 100);

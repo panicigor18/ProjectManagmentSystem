@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using DataLayer;
 namespace ProjectManagmentSystem.Forms
 {
     public partial class FormUpdateProject : Form
     {
-        DBBroker broker = new DBBroker();
+        ProjectLogic projectLogic = new ProjectLogic();
+        UsersLogic usersLogic = new UsersLogic();
         Project project;
         public FormUpdateProject(Project project)
         {
             InitializeComponent();
             txtProjectCode.Text = project.ProjectCode;
             txtName.Text = project.Name;
-            cmbProjectManager.DataSource = broker.getAllUsersWithRole(1);
+            cmbProjectManager.DataSource = usersLogic.getAllUsersWithRole(1);
             this.project = project;
         }
 
@@ -40,7 +42,7 @@ namespace ProjectManagmentSystem.Forms
             
             project.User = (User)cmbProjectManager.SelectedItem;
             project.ProjectManager = project.User.Username;
-            bool pass = broker.updateProject(project);
+            bool pass = projectLogic.updateProject(project);
             if (pass)
             {
                 MessageBox.Show("Project updated successfully");
@@ -49,6 +51,7 @@ namespace ProjectManagmentSystem.Forms
             {
                 MessageBox.Show("System can't update project");
             }
+            this.Close();
         }
 
         private void cmbProjectManager_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,7 +66,7 @@ namespace ProjectManagmentSystem.Forms
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-
+            txtName.BackColor = Color.White;
         }
 
         private void txtProjectCode_TextChanged(object sender, EventArgs e)

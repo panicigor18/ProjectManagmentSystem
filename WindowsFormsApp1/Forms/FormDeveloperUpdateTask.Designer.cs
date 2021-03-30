@@ -1,5 +1,5 @@
 ﻿
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     partial class FormDeveloperUpdateTask
     {
@@ -41,71 +41,68 @@ namespace ProjectManagmentSystem.Forms
             // cmbStatus
             // 
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(106, 30);
+            this.cmbStatus.Location = new System.Drawing.Point(104, 31);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(201, 21);
-            this.cmbStatus.TabIndex = 24;
-            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
+            this.cmbStatus.TabIndex = 31;
             // 
             // txtProgress
             // 
-            this.txtProgress.Location = new System.Drawing.Point(106, 72);
+            this.txtProgress.Location = new System.Drawing.Point(104, 73);
             this.txtProgress.Name = "txtProgress";
             this.txtProgress.Size = new System.Drawing.Size(201, 20);
-            this.txtProgress.TabIndex = 23;
-            this.txtProgress.TextChanged += new System.EventHandler(this.txtProgress_TextChanged);
+            this.txtProgress.TabIndex = 30;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 75);
+            this.label5.Location = new System.Drawing.Point(12, 76);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
-            this.label5.TabIndex = 22;
+            this.label5.TabIndex = 29;
             this.label5.Text = "Progress";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 33);
+            this.label4.Location = new System.Drawing.Point(12, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 21;
+            this.label4.TabIndex = 28;
             this.label4.Text = "Status:";
             // 
             // btnUpdateTask
             // 
-            this.btnUpdateTask.Location = new System.Drawing.Point(17, 268);
+            this.btnUpdateTask.Location = new System.Drawing.Point(15, 269);
             this.btnUpdateTask.Name = "btnUpdateTask";
             this.btnUpdateTask.Size = new System.Drawing.Size(289, 38);
-            this.btnUpdateTask.TabIndex = 20;
+            this.btnUpdateTask.TabIndex = 27;
             this.btnUpdateTask.Text = "Update Task";
             this.btnUpdateTask.UseVisualStyleBackColor = true;
-            this.btnUpdateTask.Click += new System.EventHandler(this.btnUpdateTask_Click);
             // 
             // tbxDescription
             // 
-            this.tbxDescription.Location = new System.Drawing.Point(107, 130);
+            this.tbxDescription.Location = new System.Drawing.Point(105, 131);
             this.tbxDescription.Multiline = true;
             this.tbxDescription.Name = "tbxDescription";
             this.tbxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbxDescription.Size = new System.Drawing.Size(200, 79);
-            this.tbxDescription.TabIndex = 19;
+            this.tbxDescription.TabIndex = 26;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 130);
+            this.label3.Location = new System.Drawing.Point(13, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 18;
+            this.label3.TabIndex = 25;
             this.label3.Text = "Description:";
             // 
             // FormDeveloperUpdateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 450);
+            this.ClientSize = new System.Drawing.Size(317, 428);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtProgress);
             this.Controls.Add(this.label5);

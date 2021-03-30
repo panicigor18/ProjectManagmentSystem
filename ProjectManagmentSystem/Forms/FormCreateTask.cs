@@ -1,26 +1,30 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
+using DataLayer;
+using ProjectManagmentSystem.BusinessLayer;
 
 namespace ProjectManagmentSystem.Forms
 {
     
     public partial class FormCreateTask : Form
     {
-        DBBroker broker = new DBBroker();
+        UsersLogic usersLogic = new UsersLogic();
+        TaskLogic taskLogic = new TaskLogic();
         Project project = new Project();
         BindingList<User> listUsers;
         public FormCreateTask(Project project)
         {
             InitializeComponent();
             this.project = project;
-            listUsers = new BindingList<User>(broker.getAllUsersWithRole(2));
+            listUsers = new BindingList<User>((IList<User>)usersLogic.getAllUsersWithRole(2));
             foreach (User user in listUsers)
             {
                 cmbDevelopers.Items.Add(user);
@@ -45,14 +49,19 @@ namespace ProjectManagmentSystem.Forms
             {
                 task.Assignee = "";
             }
+            if (tbxDescription.Text == "")
+            {
+                MessageBox.Show("Description must have text");
+                return;
+            }
             task.Description = tbxDescription.Text;
             task.Deadline = dtpDeadline.Value;
             task.Progress = 0;
             task.Status = 0;
-            task.TaskID = broker.returnTaskId();
+            task.TaskID = taskLogic.returnTaskId();
             project.Tasks.Add(task);
             
-            bool pass = broker.createTask(task);
+            bool pass = taskLogic.createTask(task);
             if (pass)
             {
                 MessageBox.Show("Task added succesfuly");
@@ -61,6 +70,13 @@ namespace ProjectManagmentSystem.Forms
             {
                 MessageBox.Show("System can't save task");
             }
+            refreshInputs();
+        }
+
+        private void refreshInputs()
+        {
+            dtpDeadline.Value = dtpDeadline.MinDate;
+            tbxDescription.Text = "";
         }
     }
 }

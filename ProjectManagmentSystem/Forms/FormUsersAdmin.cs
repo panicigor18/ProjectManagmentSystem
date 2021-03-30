@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using DataLayer;
 namespace ProjectManagmentSystem.Forms
 {
     public partial class FormUsersAdmin : Form
     {
-        DBBroker broker = new DBBroker();
+        UsersLogic usersLogic = new UsersLogic();
+        ProjectLogic projectLogic = new ProjectLogic();
         BindingList<User> bindUsers;
         public FormUsersAdmin(User user1)
         {
@@ -22,7 +24,7 @@ namespace ProjectManagmentSystem.Forms
 
         private void refreshGrid()
         {
-            bindUsers = new BindingList<User>(broker.reaturnAllUsers());
+            bindUsers = new BindingList<User>(usersLogic.reaturnAllUsers());
             foreach (User user in bindUsers)
             {
                 user.rolee = (Role)user.Role;
@@ -43,7 +45,7 @@ namespace ProjectManagmentSystem.Forms
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormCreateUser form = new FormCreateUser();
+            FormCreateUser form = new FormCreateUser(false);
             form.ShowDialog();
             this.Show();
             refreshGrid();
@@ -67,7 +69,14 @@ namespace ProjectManagmentSystem.Forms
             DialogResult dialogResult = MessageBox.Show("Do you want to delete that user", "Delete user", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                bool pass=broker.removeUser(user);
+                var projectsForPM = projectLogic.returnAllProjectForPM(user);
+                if (projectsForPM.Count > 0)
+                {
+                    MessageBox.Show($"You must delete all project where {user} is Project Manager or reassign to another Project Manager and then you can delete {user}");
+                    return;
+                }
+
+                bool pass=usersLogic.removeUser(user);
                 if (pass)
                 {
                     MessageBox.Show("User deleted successfully");
@@ -104,6 +113,7 @@ namespace ProjectManagmentSystem.Forms
             FormUpdateUser form = new FormUpdateUser(user);
             form.ShowDialog();
             this.Show();
+            refreshGrid();
         }
     }
 }

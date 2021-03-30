@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataLayer;
 
 namespace ProjectManagmentSystem
 {
@@ -18,6 +19,16 @@ namespace ProjectManagmentSystem
         {
             user1=user;
             InitializeComponent();
+            this.FormClosed += MyClosedHandler;
+        }
+
+        private void MyClosedHandler(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            Form1 form = new Form1();
+            
+            form.ShowDialog();
+            
         }
 
         private void btnProjects_Click(object sender, EventArgs e)
@@ -35,5 +46,12 @@ namespace ProjectManagmentSystem
             forma.ShowDialog();
             this.Show();
         }
+
+        private void FormAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

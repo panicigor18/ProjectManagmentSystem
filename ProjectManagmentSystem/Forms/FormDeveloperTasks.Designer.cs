@@ -48,6 +48,7 @@ namespace ProjectManagmentSystem.Forms
             // 
             this.dvgTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgTasks.Location = new System.Drawing.Point(12, 119);
+            this.dvgTasks.MultiSelect = false;
             this.dvgTasks.Name = "dvgTasks";
             this.dvgTasks.Size = new System.Drawing.Size(612, 228);
             this.dvgTasks.TabIndex = 3;

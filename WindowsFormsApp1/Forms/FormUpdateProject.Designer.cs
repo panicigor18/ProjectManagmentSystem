@@ -1,5 +1,5 @@
 ﻿
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     partial class FormUpdateProject
     {
@@ -40,75 +40,68 @@ namespace ProjectManagmentSystem.Forms
             // 
             // btnACreateProject
             // 
-            this.btnACreateProject.Location = new System.Drawing.Point(20, 206);
+            this.btnACreateProject.Location = new System.Drawing.Point(28, 210);
             this.btnACreateProject.Name = "btnACreateProject";
             this.btnACreateProject.Size = new System.Drawing.Size(279, 49);
-            this.btnACreateProject.TabIndex = 13;
+            this.btnACreateProject.TabIndex = 20;
             this.btnACreateProject.Text = "Update Project";
             this.btnACreateProject.UseVisualStyleBackColor = true;
-            this.btnACreateProject.Click += new System.EventHandler(this.btnAddProject_Click);
             // 
             // cmbProjectManager
             // 
             this.cmbProjectManager.FormattingEnabled = true;
-            this.cmbProjectManager.Location = new System.Drawing.Point(133, 138);
+            this.cmbProjectManager.Location = new System.Drawing.Point(141, 142);
             this.cmbProjectManager.Name = "cmbProjectManager";
             this.cmbProjectManager.Size = new System.Drawing.Size(166, 21);
-            this.cmbProjectManager.TabIndex = 12;
-            this.cmbProjectManager.SelectedIndexChanged += new System.EventHandler(this.cmbProjectManager_SelectedIndexChanged);
+            this.cmbProjectManager.TabIndex = 19;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(133, 86);
+            this.txtName.Location = new System.Drawing.Point(141, 90);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(166, 20);
-            this.txtName.TabIndex = 11;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtName.TabIndex = 18;
             // 
             // txtProjectCode
             // 
-            this.txtProjectCode.Location = new System.Drawing.Point(133, 32);
+            this.txtProjectCode.Location = new System.Drawing.Point(141, 36);
             this.txtProjectCode.Name = "txtProjectCode";
             this.txtProjectCode.ReadOnly = true;
             this.txtProjectCode.Size = new System.Drawing.Size(166, 20);
-            this.txtProjectCode.TabIndex = 10;
-            this.txtProjectCode.TextChanged += new System.EventHandler(this.txtProjectCode_TextChanged);
+            this.txtProjectCode.TabIndex = 17;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 141);
+            this.label3.Location = new System.Drawing.Point(25, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 16;
             this.label3.Text = "Project Manager";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 89);
+            this.label2.Location = new System.Drawing.Point(25, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 8;
+            this.label2.TabIndex = 15;
             this.label2.Text = "Name:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 35);
+            this.label1.Location = new System.Drawing.Point(25, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 7;
+            this.label1.TabIndex = 14;
             this.label1.Text = "Project code:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FormUpdateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 450);
+            this.ClientSize = new System.Drawing.Size(319, 447);
             this.Controls.Add(this.btnACreateProject);
             this.Controls.Add(this.cmbProjectManager);
             this.Controls.Add(this.txtName);

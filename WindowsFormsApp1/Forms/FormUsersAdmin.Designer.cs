@@ -1,5 +1,5 @@
 ﻿
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     partial class FormUsersAdmin
     {
@@ -29,56 +29,53 @@ namespace ProjectManagmentSystem.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.btnCreateUser = new System.Windows.Forms.Button();
-            this.btnUpdateUser = new System.Windows.Forms.Button();
             this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnCreateUser = new System.Windows.Forms.Button();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.Location = new System.Drawing.Point(509, 349);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(192, 48);
+            this.btnDeleteUser.TabIndex = 7;
+            this.btnDeleteUser.Text = "Delete User";
+            this.btnDeleteUser.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateUser
+            // 
+            this.btnUpdateUser.Location = new System.Drawing.Point(31, 349);
+            this.btnUpdateUser.Name = "btnUpdateUser";
+            this.btnUpdateUser.Size = new System.Drawing.Size(192, 48);
+            this.btnUpdateUser.TabIndex = 6;
+            this.btnUpdateUser.Text = "Update User";
+            this.btnUpdateUser.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateUser
+            // 
+            this.btnCreateUser.Location = new System.Drawing.Point(31, 21);
+            this.btnCreateUser.Name = "btnCreateUser";
+            this.btnCreateUser.Size = new System.Drawing.Size(192, 48);
+            this.btnCreateUser.TabIndex = 5;
+            this.btnCreateUser.Text = "Create User";
+            this.btnCreateUser.UseVisualStyleBackColor = true;
             // 
             // dgvUsers
             // 
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsers.Location = new System.Drawing.Point(31, 108);
+            this.dgvUsers.Location = new System.Drawing.Point(31, 93);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.Size = new System.Drawing.Size(670, 224);
-            this.dgvUsers.TabIndex = 0;
-            // 
-            // btnCreateUser
-            // 
-            this.btnCreateUser.Location = new System.Drawing.Point(31, 36);
-            this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Size = new System.Drawing.Size(192, 48);
-            this.btnCreateUser.TabIndex = 1;
-            this.btnCreateUser.Text = "Create User";
-            this.btnCreateUser.UseVisualStyleBackColor = true;
-            this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
-            // 
-            // btnUpdateUser
-            // 
-            this.btnUpdateUser.Location = new System.Drawing.Point(31, 364);
-            this.btnUpdateUser.Name = "btnUpdateUser";
-            this.btnUpdateUser.Size = new System.Drawing.Size(192, 48);
-            this.btnUpdateUser.TabIndex = 2;
-            this.btnUpdateUser.Text = "Update User";
-            this.btnUpdateUser.UseVisualStyleBackColor = true;
-            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
-            // 
-            // btnDeleteUser
-            // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(509, 364);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(192, 48);
-            this.btnDeleteUser.TabIndex = 3;
-            this.btnDeleteUser.Text = "Delete User";
-            this.btnDeleteUser.UseVisualStyleBackColor = true;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            this.dgvUsers.TabIndex = 4;
             // 
             // FormUsersAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 450);
+            this.ClientSize = new System.Drawing.Size(728, 422);
             this.Controls.Add(this.btnDeleteUser);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.btnCreateUser);
@@ -92,9 +89,9 @@ namespace ProjectManagmentSystem.Forms
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvUsers;
-        private System.Windows.Forms.Button btnCreateUser;
-        private System.Windows.Forms.Button btnUpdateUser;
         private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.Button btnUpdateUser;
+        private System.Windows.Forms.Button btnCreateUser;
+        private System.Windows.Forms.DataGridView dgvUsers;
     }
 }

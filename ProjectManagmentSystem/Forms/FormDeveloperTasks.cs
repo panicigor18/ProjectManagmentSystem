@@ -1,18 +1,20 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
+using System.Windows.Forms;
+using DataLayer;
 namespace ProjectManagmentSystem.Forms
 {
     public partial class FormDeveloperTasks : Form
     {
-        DBBroker broker = new DBBroker();
+        UsersLogic usersLogic = new UsersLogic();
+        TaskLogic taskLogic = new TaskLogic();
         BindingList<Task> bindTasks;
         User user;
         public FormDeveloperTasks(User user)
@@ -24,10 +26,11 @@ namespace ProjectManagmentSystem.Forms
 
         private void refresh()
         {
-            bindTasks = new BindingList<Task>(broker.returnAllTasksForUser(user));
+            bindTasks = new BindingList<Task>(usersLogic.returnAllTasksForUser(user));
             foreach (var task in bindTasks)
             {
                 task.ProgressInPercentes = Convert.ToDecimal(task.Progress * 100);
+                task.StatusTemp = (Status)task.Status;
             }
             dvgTasks.DataSource = bindTasks;
             dvgTasks.ReadOnly = true;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjectManagmentSystem.Forms
+namespace WindowsFormsApp1.Forms
 {
     public partial class FormUpdateUser : Form
     {
         public string oldUsername;
         private DBBroker broker = new DBBroker();
         public User user;
+
         public FormUpdateUser(User user)
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace ProjectManagmentSystem.Forms
             if (txtUsernam.Text != "")
             {
                 bool UsernameUnique = broker.isUsernameUnique(txtUsernam.Text);
-                if (UsernameUnique||txtUsernam.Text==oldUsername)
+                if (UsernameUnique || txtUsernam.Text == oldUsername)
                 {
                     user.Username = txtUsernam.Text;
                 }
@@ -104,8 +106,8 @@ namespace ProjectManagmentSystem.Forms
                 MessageBox.Show("Please select a role");
                 return;
             }
-            
-            bool pass = broker.updateUser(user,oldUsername);
+
+            bool pass = broker.updateUser(user, oldUsername);
             //change username in tasks
             if (pass)
             {

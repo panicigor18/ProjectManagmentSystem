@@ -115,6 +115,7 @@ namespace ProjectManagmentSystem.Forms
             this.txtUsernam.Name = "txtUsernam";
             this.txtUsernam.Size = new System.Drawing.Size(199, 20);
             this.txtUsernam.TabIndex = 7;
+            this.txtUsernam.Text = "lazarkostic";
             // 
             // txtPasword
             // 
@@ -123,6 +124,7 @@ namespace ProjectManagmentSystem.Forms
             this.txtPasword.PasswordChar = '*';
             this.txtPasword.Size = new System.Drawing.Size(199, 20);
             this.txtPasword.TabIndex = 8;
+            this.txtPasword.Text = "lazar";
             // 
             // txtConfirmPassword
             // 
@@ -131,6 +133,7 @@ namespace ProjectManagmentSystem.Forms
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(199, 20);
             this.txtConfirmPassword.TabIndex = 9;
+            this.txtConfirmPassword.Text = "lazar";
             // 
             // txtEmail
             // 
@@ -138,6 +141,7 @@ namespace ProjectManagmentSystem.Forms
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(199, 20);
             this.txtEmail.TabIndex = 10;
+            this.txtEmail.Text = "lazar@gmail.com";
             // 
             // txtName
             // 
@@ -145,6 +149,7 @@ namespace ProjectManagmentSystem.Forms
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(199, 20);
             this.txtName.TabIndex = 11;
+            this.txtName.Text = "Lazar";
             // 
             // txtSurname
             // 
@@ -152,6 +157,7 @@ namespace ProjectManagmentSystem.Forms
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(199, 20);
             this.txtSurname.TabIndex = 12;
+            this.txtSurname.Text = "Kostic";
             // 
             // cmbRole
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagmentSystem.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataLayer;
 
 namespace ProjectManagmentSystem.Forms
 {
     public partial class FormUpdateUser : Form
     {
         public string oldUsername;
-        private DBBroker broker = new DBBroker();
+        UsersLogic usersLogic = new UsersLogic();
         public User user;
         public FormUpdateUser(User user)
         {
@@ -34,7 +36,7 @@ namespace ProjectManagmentSystem.Forms
         {
             if (txtUsernam.Text != "")
             {
-                bool UsernameUnique = broker.isUsernameUnique(txtUsernam.Text);
+                bool UsernameUnique = usersLogic.isUsernameUnique(txtUsernam.Text);
                 if (UsernameUnique||txtUsernam.Text==oldUsername)
                 {
                     user.Username = txtUsernam.Text;
@@ -55,7 +57,16 @@ namespace ProjectManagmentSystem.Forms
             {
                 if (txtPasword.Text == txtConfirmPassword.Text)
                 {
-                    user.Password = txtPasword.Text;
+                    string ErrorMessage;
+                    if (usersLogic.ValidatePassword(txtPasword.Text, out ErrorMessage))
+                    {
+                        user.Password = txtPasword.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show(ErrorMessage);
+                        return;
+                    }
                 }
                 else
                 {
@@ -105,18 +116,19 @@ namespace ProjectManagmentSystem.Forms
                 return;
             }
             
-            bool pass = broker.updateUser(user,oldUsername);
+            bool pass = usersLogic.updateUser(user,oldUsername);
             //change username in tasks
             if (pass)
             {
                 MessageBox.Show("User updated successfully");
-                return;
+                
             }
             else
             {
                 MessageBox.Show("System can't update user");
-                return;
+             
             }
+            this.Close();
         }
     }
 }
